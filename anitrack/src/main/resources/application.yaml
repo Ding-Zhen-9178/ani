@@ -1,0 +1,61 @@
+spring:
+  application:
+    name: anitrack
+  datasource:
+    driver-class-name: org.sqlite.JDBC
+    url: jdbc:sqlite:D:/Users/12931/Desktop/anitrack/anime.db
+    username:
+    password:
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+      continue-on-error: true
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      timeout: 2s
+      lettuce:
+        pool:
+          max-active: 4
+          max-idle: 2
+          min-idle: 1
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+logging:
+  level:
+    com.ani: DEBUG
+
+springdoc:
+  swagger-ui:
+    path: /docs.html
+    persist-authorization: true
+  api-docs:
+    path: /v3/api-docs
+
+auth:
+  jwt-secret: YW5pdHJhY2stc2VjcmV0LWtleS1mb3Itand0LXRva2VuLWdlbmVyYXRpb24=
+  jwt-expiration: 86400000
+
+langchain4j:
+  open-ai:
+    chat-model:
+      api-key: sk-c931dce8189349de91bd5ac8ec7b8769
+      base-url: https://api.deepseek.com
+      model-name: deepseek-chat
+      temperature: 0.7
+      timeout: 60s
+      max-tokens: 2048
+      log-requests: true
+      log-responses: true
+    streaming-chat-model:
+      api-key: sk-c931dce8189349de91bd5ac8ec7b8769
+      base-url: https://api.deepseek.com
+      model-name: deepseek-chat
+      temperature: 0.7
+      timeout: 60s
